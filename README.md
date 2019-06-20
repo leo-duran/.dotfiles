@@ -64,6 +64,12 @@ brew install fd
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ```
 
+create swapfile folder
+
+```
+mkdir $HOME/.vim/swapfiles
+```
+
 ## install with plug
 
 ```
