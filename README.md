@@ -40,7 +40,7 @@ nvm alias default 10.11.0
 install additional application with brew casks
 
 ```
-source install-from-cask.sh
+source .dotfiles/install-from-cask.sh
 ```
 
 ## install vim-plug
