@@ -12,19 +12,31 @@ vi .gitconfig
   path = ~/.dotfiles/.gitconfig
 ```
 
-install brew
+bootstrap
+
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+./bootstrap.sh
 ```
 
-install zsh
+config zsh
 
 ```
-brew install zsh
 git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 ```
+
+## config tmux
+
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+```
+
+- load up tmux and install plugins with prefix+I
+- config iterm to use the color profile found in this repo
+
+create local secrets files
 
 ```
 vi ~/.secrets
@@ -33,35 +45,29 @@ vi ~/.secrets
 install current node and set as default
 
 ```
+<<<<<<< HEAD
+source .dotfiles/install-from-cask.sh
+=======
 nvm install 10.11.0
 nvm alias default 10.11.0
-```
-
-install additional application with brew casks
-
-```
-source .dotfiles/install-from-cask.sh
+>>>>>>> upstream/master
 ```
 
 ## install vim-plug
 
 ```
-brew install python
-
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
+ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-## install fd
-
-```
-brew install fd
 ```
 
 ## setup vim configuration
 
 ```
+
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
+
 ```
 
 create swapfile folder
@@ -73,19 +79,15 @@ mkdir $HOME/.vim/swapfiles
 ## install with plug
 
 ```
+
 :PlugInstall
-```
-
-## install COC extenions
 
 ```
-:CocInstall coc-tsserver coc-json
+
+## install additional coc extensions
+
 ```
 
-## Slack emojipack
+:CocInstall coc-emoji coc-jest coc-json coc-tsserver
 
-install [emojipack](https://github.com/lambtron/emojipacks)
-
-run the install
-
-`emojipacks -y https://github.com/danethurber/.dotfiles/emojipack/pack.yml`
+```
